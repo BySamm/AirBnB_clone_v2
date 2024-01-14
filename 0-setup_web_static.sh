@@ -19,4 +19,3 @@ if ! grep -q "location /hbnb_static {" /etc/nginx/sites-enabled/default; then
     sudo sed -i '6 i\\tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}\n' /etc/nginx/sites-enabled/default
 fi
 sudo service nginx restart
-
