@@ -6,12 +6,6 @@ exec { '/usr/bin/env apt -y update' : }
 -> file { '/data':
   ensure  => 'directory'
 }
--> file { '/data/web_static':
-  ensure => 'directory'
-}
--> file { '/data/web_static/releases':
-  ensure => 'directory'
-}
 -> file { '/data/web_static/releases/test':
   ensure => 'directory'
 }
@@ -25,7 +19,7 @@ exec { '/usr/bin/env apt -y update' : }
   <head>
   </head>
   <body>
-    <p>Nginx server test</p>
+    Holberton School
   </body>
 </html>"
 }
@@ -33,23 +27,23 @@ exec { '/usr/bin/env apt -y update' : }
   ensure => 'link',
   target => '/data/web_static/releases/test'
 }
--> exec { 'chown -R ubuntu:ubuntu /data/':
+-> exec { 'sudo chown -R ubuntu:ubuntu /data/':
   path => '/usr/bin/:/usr/local/bin/:/bin/'
 }
--> file { '/var/www':
+-> file { '/etc/nginx':
   ensure => 'directory'
 }
--> file { '/var/www/html':
+-> file { '/etc/nginx/html':
   ensure => 'directory'
 }
--> file { '/var/www/html/index.html':
+-> file { '/etc/nginx/html/index.html':
   ensure  => 'present',
   content => "<!DOCTYPE html>
 <html>
   <head>
   </head>
   <body>
-    <p>Nginx server test</p>
+    Holberton School
   </body>
 </html>"
 }
