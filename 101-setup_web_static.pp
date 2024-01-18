@@ -3,9 +3,6 @@ exec { '/usr/bin/env apt -y update' : }
 -> package { 'nginx':
   ensure => installed,
 }
--> file { '/data':
-  ensure  => 'directory'
-}
 -> file { '/data/web_static/releases/test':
   ensure => 'directory'
 }
@@ -30,9 +27,6 @@ exec { '/usr/bin/env apt -y update' : }
 -> exec { 'sudo chown -R ubuntu:ubuntu /data/':
   path => '/usr/bin/:/usr/local/bin/:/bin/'
 }
--> file { '/etc/nginx':
-  ensure => 'directory'
-}
 -> file { '/etc/nginx/html':
   ensure => 'directory'
 }
@@ -49,7 +43,7 @@ exec { '/usr/bin/env apt -y update' : }
 }
 exec { 'nginx_conf':
   environment => ['data=\ \tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}\n'],
-  command     => 'sed -i "39i $data" /etc/nginx/sites-enabled/default',
+  command     => 'sed -i "6i $data" /etc/nginx/sites-enabled/default',
   path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin'
 }
 -> service { 'nginx':
