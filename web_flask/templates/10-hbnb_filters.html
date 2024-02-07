@@ -8,11 +8,13 @@
     <LINK rel="stylesheet" href="../static/styles/reset.css">
     <LINK rel="stylesheet" href="../static/styles/4-common.css">
     <LINK rel="stylesheet" href="../static/styles/6-filters.css">
-    <LINK rel="icon" href="../static/images/icon.png">
+    <LINK rel="icon" href="../static/images/icon.ico" type="image/png">
   </HEAD>
 
   <BODY>
-    <HEADER></HEADER>
+    <HEADER>
+	    <DIV class="logo">
+    </HEADER>
 
     <DIV class="container">
       <SECTION class="filters">
@@ -22,7 +24,7 @@
           <DIV class="popover">
             <UL>
             {% for state in states.values()|sort(attribute="name") %}
-              <LI><STRONG>{{ state.name }}</STRONG>
+	    <LI><H2><STRONG>{{ state.name }}</STRONG></H2>
                 <UL>
                 {% for city in state.cities|sort(attribute="name") %}
                   <LI>{{ city.name }}</LI>

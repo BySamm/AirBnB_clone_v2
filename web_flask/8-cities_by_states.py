@@ -13,18 +13,18 @@ app.url_map.strict_slashes = False
 
 
 @app.teardown_appcontext
-def closedb(exc):
-    """ to close a database session"""
+def close_db(exc):
+    """ Close the database session"""
     storage.close()
 
 
 @app.route('/cities_by_states')
 def states_list():
     """ /states_list route """
-    states = storage.all(State).values()
+    states = list(storage.all(State).values())
     return render_template('8-cities_by_states.html', states=states)
 
 
 if __name__ == '__main__':
-    storage.reload()
+    #storage.reload()
     app.run("0.0.0.0", 5000)

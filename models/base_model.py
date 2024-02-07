@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 """This is the base model class for AirBnB"""
+import sys
+print(sys.path)
+
+import sqlalchemy 
 from sqlalchemy.ext.declarative import declarative_base
 import uuid
 import models
